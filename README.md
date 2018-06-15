@@ -11,6 +11,8 @@ Edit file /etc/pam.d/common-session
 > session optional pam_exec.so type=open_session seteuid /usr/local/bin/ssh-telegram.sh
 * With CentOS
 Edit the file /etc/pam.d/system-auth
-> session optional pam_exec.so type=open_session seteuid /usr/local/bin/tgbot.sh
+> session optional pam_exec.so type=open_session seteuid /usr/local/bin/ssh-telegram.sh
 
 ### Put the command to run in the user’s shell init script, such as .bashrc, or /etc/profile or a script under /etc/profile.d/.
+
+> Ref: https://linuxer.pro/2017/05/get-real-time-telegram-notification-when-ssh-login-on-linux/#setup-a-telegram-bot
