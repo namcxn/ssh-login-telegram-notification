@@ -7,11 +7,11 @@ TARGET="<yout telegram chat ID>" # Telegram ID of the conversation with the bot,
 DATE_EXEC="$(date "+%d-%b-%Y-%H:%M")"
 TMPFILE=/tmp/ipinfo-${DATE_EXEC}.txt
 
-curl http://ipinfo.io/$PAM_RHOST -s -o $TMPFILE
+curl http://ip-api.com/json/$PAM_RHOST -s -o $TMPFILE
 CITY=$(cat $TMPFILE | jq '.city' | sed 's/"//g')
-REGION=$(cat $TMPFILE | jq '.region' | sed 's/"//g')
+REGION=$(cat $TMPFILE | jq '.regionName' | sed 's/"//g')
 COUNTRY=$(cat $TMPFILE | jq '.country' | sed 's/"//g')
-ORG=$(cat $TMPFILE | jq '.org' | sed 's/"//g')
+ORG=$(cat $TMPFILE | jq '.as' | sed 's/"//g')
 
 TEXT="User *$PAM_USER* logged in on *$HOSTNAME* at $(date '+%Y-%m-%d %H:%M:%S %Z') from $PAM_RHOST - $ORG - $CITY, $REGION, $COUNTRY"
 #Remote host: $PAM_RHOST"
